@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inaya Cakezz - Premium Cakes in Sasaram</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    :root {
+      --primary: #e91e63;
+      --primary-light: #f48fb1;
+      --primary-dark: #c2185b;
+      --secondary: #6a1b9a;
+      --light: #fce4ec;
+      --dark: #4a148c;
+      --white: #ffffff;
+      --black: #212121;
+      --gray: #f5f5f5;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      background-color: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+    }
+    
+    h2 {
+      font-size: 2rem;
+      text-align: center;
+      position: relative;
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--primary);
+    }
+    
+    p {
+      margin-bottom: 1rem;
+    }
+    
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    a:hover {
+      color: var(--primary-dark);
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn:hover {
+      background-color: var(--primary-dark);
+      color: var(--white);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .text-center {
+      text-align: center;
+    }
+    
+    .section {
+      padding: 5rem 0;
+    }
+    
+    .section-light {
+      background-color: var(--gray);
+    }
+    
+    /* Header */
+    header {
+      background-color: var(--white);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-img {
+      height: 50px;
+    }
+    
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-left: 0.5rem;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-item {
+      margin-left: 2rem;
+    }
+    
+    .nav-link {
+      color: var(--black);
+      font-weight: 600;
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--dark);
+      cursor: pointer;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/600') center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      color: var(--white);
+      text-align: center;
+      padding-top: 80px;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      animation: fadeInDown 1s ease;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      animation: fadeInUp 1s ease;
+    }
+    
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    .about-img {
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    
+    .about-img img {
+      width: 100%;
+      height: auto;
+      transition: transform 0.5s ease;
+    }
+    
+    .about-img img:hover {
+      transform: scale(1.05);
+    }
+    
+    .about-text h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+    }
+    
+    /* Services Section */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .service-card {
+      background-color: var(--white);
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .service-img {
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .service-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .service-card:hover .service-img img {
+      transform: scale(1.1);
+    }
+    
+    .service-content {
+      padding: 1.5rem;
+    }
+    
+    .service-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    /* Gallery Section */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      height: 250px;
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.5s ease;
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(233, 30, 99, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .gallery-overlay h4 {
+      color: var(--white);
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 0 1rem;
+    }
+    
+    /* Testimonials Section */
+    .testimonials-slider {
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .testimonial {
+      background-color: var(--white);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      margin: 1.5rem;
+    }
+    
+    .testimonial-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      overflow: hidden;
+      border: 3px solid var(--primary);
+    }
+    
+    .testimonial-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    
+    .testimonial-text::before,
+    .testimonial-text::after {
+      content: '"';
+      font-size: 2rem;
+      color: var(--primary-light);
+      position: absolute;
+    }
+    
+    .testimonial-text::before {
+      top: -10px;
+      left: -5px;
+    }
+    
+    .testimonial-text::after {
+      bottom: -20px;
+      right: -5px;
+    }
+    
+    .testimonial-name {
+      font-weight: 700;
+      color: var(--primary);
+    }
+    
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    
+    .contact-form {
+      background-color: var(--white);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.1);
+    }
+    
+    textarea.form-control {
+      resize: vertical;
+      min-height: 150px;
+    }
+    
+    .contact-info {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 2rem;
+      border-radius: 10px;
+    }
+    
+    .contact-info h3 {
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-icon {
+      margin-right: 1rem;
+      font-size: 1.5rem;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .social-links {
+      display: flex;
+      margin-top: 2rem;
+    }
+    
+    .social-link {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 1rem;
+      color: var(--white);
+      transition: all 0.3s ease;
+    }
+    
+    .social-link:hover {
+      background-color: var(--white);
+      color: var(--primary);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: var(--white);
+      padding: 3rem 0 1rem;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-logo {
+      color: var(--white);
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-links h4 {
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--white);
+      padding-left: 5px;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+    
+    /* FSSAI Badge */
+    .fssai-badge {
+      display: inline-flex;
+      align-items: center;
+      background-color: var(--white);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      margin-top: 1rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .fssai-badge img {
+      height: 30px;
+      margin-right: 0.5rem;
+    }
+    
+    .fssai-badge span {
+      color: var(--dark);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .about-img {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: var(--white);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.5s ease;
+      }
+      
+      .nav-links.active {
+        left: 0;
+      }
+      
+      .nav-item {
+        margin: 1.5rem 0;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .section {
+        padding: 3rem 0;
+      }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">
+          <div class="logo-text">Inaya Cakezz</div>
+        </div>
+        <ul class="nav-links">
+          <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+          <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Delicious Cakes for Every Occasion</h1>
+        <p>Handcrafted with love by skilled bakers with over 7 years of experience</p>
+        <a href="#contact" class="btn">Order Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2>About Us</h2>
+      <div class="about-grid">
+        <div class="about-img">
+          <img src="/api/placeholder/600/400" alt="Inaya Cakezz Bakery">
+        </div>
+        <div class="about-text">
+          <h3>Welcome to Inaya Cakezz</h3>
+          <p>Established with passion and dedication, Inaya Cakezz is a premium cake shop located in Shivsagar, Sasaram. Founded by <span class="highlight">Tauqeer Kazmi</span>, our bakery is known for creating delicious and visually stunning cakes for all occasions.</p>
+          <p>Our master baker, <span class="highlight">Neda Kazmi</span>, brings over 7 years of experience in the art of cake making, ensuring that every creation is not just a treat for the taste buds but also a feast for the eyes.</p>
+          <p>At Inaya Cakezz, we take pride in using only the finest ingredients to craft our cakes. From traditional flavors to custom designs, our team pays meticulous attention to every detail to exceed your expectations.</p>
+          <div class="fssai-badge">
+            <img src="/api/placeholder/80/30" alt="FSSAI Logo">
+            <span>FSSAI Registered</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section section-light">
+    <div class="container">
+      <h2>Our Specialties</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-img">
+            <img src="/api/placeholder/400/300" alt="Birthday Cakes">
+          </div>
+          <div class="service-content">
+            <h3>Birthday Cakes</h3>
+            <p>Celebrate your special day with our delicious and beautifully designed birthday cakes. Available in various flavors and sizes to make your celebration memorable.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-img">
+            <img src="/api/placeholder/400/300" alt="Wedding Cakes">
+          </div>
+          <div class="service-content">
+            <h3>Wedding Cakes</h3>
+            <p>Make your wedding day even more special with our elegant and sophisticated wedding cakes. Customized to match your wedding theme and preferences.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-img">
+            <img src="/api/placeholder/400/300" alt="Photo Printed Cakes">
+          </div>
+          <div class="service-content">
+            <h3>Photo Printed Cakes</h3>
+            <p>Turn your cherished memories into delicious treats with our photo printed cakes. Perfect for anniversaries, reunions, and special celebrations.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-img">
+            <img src="/api/placeholder/400/300" alt="Theme Cakes">
+          </div>
+          <div class="service-content">
+            <h3>Theme Cakes</h3>
+            <p>From cartoon characters to professional themes, our talented bakers can create any theme cake to bring your imagination to life and make your event unforgettable.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <h2>Our Cake Gallery</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="/api/placeholder/300/300" alt="Chocolate Cake">
+          <div class="gallery-overlay">
+            <h4>Chocolate Delight</h4>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/300/300" alt="Wedding Cake">
+          <div class="gallery-overlay">
+            <h4>Elegant Wedding Cake</h4>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/300/300" alt="Birthday Cake">
+          <div class="gallery-overlay">
+            <h4>Colorful Birthday Special</h4>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/300/300" alt="Themed Cake">
+          <div class="gallery-overlay">
+            <h4>Superhero Theme Cake</h4>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/300/300" alt="Photo Cake">
+          <div class="gallery-overlay">
+            <h4>Customized Photo Cake</h4>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/300/300" alt="Anniversary Cake">
+          <div class="gallery-overlay">
+            <h4>Anniversary Special</h4>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/300/300" alt="Fruit Cake">
+          <div class="gallery-overlay">
+            <h4>Fresh Fruit Cake</h4>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/300/300" alt="Engagement Cake">
+          <div class="gallery-overlay">
+            <h4>Engagement Celebration</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="section section-light">
+    <div class="container">
+      <h2>What Our Customers Say</h2>
+      <div class="testimonials-slider">
+        <div class="testimonial">
+          <div class="testimonial-img">
+            <img src="/api/placeholder/80/80" alt="Customer">
+          </div>
+          <p class="testimonial-text">The birthday cake for my daughter was absolutely stunning and delicious! Everyone at the party loved it. Thank you Inaya Cakezz for making her day special!</p>
+          <p class="testimonial-name">Priya Sharma</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Get In Touch</h2>
+      <div class="contact-grid">
+        <div class="contact-form">
+          <form>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+              <input type="tel" class="form-control" placeholder="Your Phone">
+            </div>
+            <div class="form-group">
+              <select class="form-control" required>
+                <option value="" disabled selected>Select Cake Type</option>
+                <option value="birthday">Birthday Cake</option>
+                <option value="wedding">Wedding Cake</option>
+                <option value="anniversary">Anniversary Cake</option>
+                <option value="custom">Custom Design</option>
+                <option value="photo">Photo Cake</option>
+                <option value="theme">Theme Cake</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" placeholder="Your Message"></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+        </div>
+        <div class="contact-info">
+          <h3>Contact Information</h3>
+          <div class="contact-detail">
+            <div class="contact-icon">📍</div>
+            <div>
+              <p>Shivsagar, Sasaram</p>
+              <p>Bihar, India</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">📞</div>
+            <div>
+              <p>+91 9876543210</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <p>info@inayacakezz.com</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">🕒</div>
+            <div>
+              <p>Monday - Saturday: 9:00 AM - 8:00 PM</p>
+              <p>Sunday: 10:00 AM - 6:00 PM</p>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link">f</a>
+            <a href="#" class="social-link">in</a>
+            <a href="#" class="social-link">📷</a>
+            <a href="#" class="social-link">🐦</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <div class="footer-logo">Inaya Cakezz</div>
+          <p>Premium cake shop in Sasaram offering delicious and beautiful cakes for all occasions.</p>
+          <div class="fssai-badge">
+            <img src="/api/placeholder/80/30" alt="FSSAI Logo">
+            <span>FSSAI Registered</span>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Birthday Cakes</a></li>
+            <li><a href="#">Wedding Cakes</a></li>
+            <li><a href="#">Anniversary Cakes</a></li>
+            <li><a href="#">Photo Cakes</a></li>
+            <li><a href="#">Theme Cakes</a></li>
